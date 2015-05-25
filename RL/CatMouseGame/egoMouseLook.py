@@ -45,16 +45,21 @@ class Cell(cellular.Cell):
 
 
 class Cat(cellular.Agent):
-    cell = None
-    score = 0
-    colour = 'orange'
+    def __init__(self, lazy = True):
+        self.cell = None
+        self.score = 0
+        self. colour = 'orange'
+        self.lazy = lazy
 
     def update(self):
-        cell = self.cell
-        if cell != mouse.cell:
-            self.goTowards(mouse.cell)
-            while cell == self.cell:
-                self.goInDirection(random.randrange(directions))
+        if self.lazy:
+            pass
+        else:
+            cell = self.cell
+            if cell != mouse.cell:
+                self.goTowards(mouse.cell)
+                while cell == self.cell:
+                    self.goInDirection(random.randrange(directions))
 
 
 class Cheese(cellular.Agent):
